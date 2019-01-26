@@ -26,8 +26,8 @@ namespace TwoSum
         public static void Main(string[] args)
         {
             TwoSums t = new TwoSums();
-            int target = 19;
-            int[] nums = new int[] { 2, 8, 11, 15 };
+            int target = 6;
+            int[] nums = new int[] { 3, 2 , 4 };
             int[] answer = new int[] { };
 
             //solution for n*n
@@ -74,15 +74,40 @@ namespace TwoSum
         public int[] TwoSumSolutionForNLogN(int[] nums, int target)
         {
             int i = 0, j = nums.Length - 1;
-            helper.heapsort(nums);
+            int[] numsSorted = new int[nums.Length];
+            for(int z = 0; z < nums.Length; z++)
+            {
+                numsSorted[z] = nums[z];
+            }
+
+            helper.heapsort(numsSorted);
 
             while (i < j)
             {
-                int sum = nums[i] + nums[j];
+                int sum = numsSorted[i] + numsSorted[j];
 
                 if (sum == target)
                 {
-                    return new int[] { i, j };
+                    int first = -1, second = -1;
+                    int k = 0;
+                    while (first == -1 || second == -1)
+                    {
+                        
+                        if(nums[k] == numsSorted[i] || nums[k] == numsSorted[j])
+                        {
+                            if (first < 0)
+                            {
+                                first = k;
+                            }
+                            else
+                            {
+                                second = k;
+                            }
+                        }
+                        k++;
+                    }
+
+                    return new int[] { first, second };
                 }
 
                 if (sum < target)
