@@ -7,7 +7,7 @@ using Helper;
 
 namespace TwoSum
 {
-    class TwoSums
+    public class TwoSums
     {
         //Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 
@@ -19,13 +19,13 @@ namespace TwoSum
 
         //Because nums[0] + nums[1] = 2 + 7 = 9,
         //return [0, 1].
-
+       
 
         SortedMethods helper = new SortedMethods();
 
         public static void Main(string[] args)
         {
-            TwoSum t = new TwoSum();
+            TwoSums t = new TwoSums();
             int target = 19;
             int[] nums = new int[] { 2, 8, 11, 15 };
             int[] answer = new int[] { };
